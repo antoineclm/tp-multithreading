@@ -6,7 +6,7 @@ from task import Task
 class TestTask(unittest.TestCase):
     def test_task(self):
         t = Task()
-        numpy.testing.assert_allclose(t.a @ t.bx, t.b)
+        numpy.testing.assert_allclose(t.a @ t.x, t.b)
 
 
 if __name__ == "__main__":
