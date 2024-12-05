@@ -31,8 +31,11 @@ class Task:
         j = json.loads(text)
         t = Task()
         t.a = np.array(j["a"])
-        t.b = np.array(j["a"])
+        t.b = np.array(j["b"])
         return t
 
     def __eq__(self, other: "Task") -> bool:
         return np.array_equal(self.a, other.a) and np.array_equal(self.b, other.b)
+
+    def __repr__(self):
+        return str(self.a[0, 0])
