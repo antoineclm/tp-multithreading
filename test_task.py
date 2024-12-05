@@ -9,6 +9,12 @@ class TestTask(unittest.TestCase):
         t.work()
         numpy.testing.assert_allclose(t.a @ t.x, t.b)
 
+    def test_task_json(self):
+        a = Task()
+        txt = a.to_json()
+        b = Task.from_json(txt)
+        self.assertEqual(a, b)
+
 
 if __name__ == "__main__":
     unittest.main()
