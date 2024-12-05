@@ -1,8 +1,9 @@
 import queue_mc as q
 
-taskQueue, resultQueue = q.connect_queue()
+
+qc = q.QueueClient()
 while True:
-    t = taskQueue.get()
+    t = qc.taskQueue.get()
     result = t.work()
     print(result[0])
-    resultQueue.put(result)
+    qc.resultQueue.put(result)

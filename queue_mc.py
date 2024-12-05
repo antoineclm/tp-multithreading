@@ -6,14 +6,14 @@ class QueueManager(BaseManager):
     pass
 
 
-def connect_queue():
-    QueueManager.register("get_taskQueue")
-    QueueManager.register("get_resultQueue")
-    m = QueueManager(address=("", 2430), authkey=b"bonjour")
-    m.connect()
-    taskQueue = m.get_taskQueue()
-    resultQueue = m.get_resultQueue()
-    return (taskQueue, resultQueue)
+class QueueClient:
+    def __init__(self):
+        QueueManager.register("get_taskQueue")
+        QueueManager.register("get_resultQueue")
+        m = QueueManager(address=("", 2430), authkey=b"bonjour")
+        m.connect()
+        self.taskQueue = m.get_taskQueue()
+        self.resultQueue = m.get_resultQueue()
 
 
 if __name__ == "__main__":
