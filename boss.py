@@ -1,17 +1,27 @@
 import queue_mc as q
 from task import Task
+import time
 
+# Initialisation du client de file d'attente
 qc = q.QueueClient()
-t1 = Task(1, 10)
-t2 = Task(2, 10)
-t3 = Task(3, 10)
-t4 = Task(4, 10)
-qc.taskQueue.put(t1)
-qc.taskQueue.put(t2)
-qc.taskQueue.put(t3)
-qc.taskQueue.put(t4)
 
-t = Task()
-while 1:
-    t = qc.resultQueue.get()
-    print(t)
+# Générateur de tâches
+task_id = 1  # Compteur pour générer des identifiants de tâches
+task_result = Task()
+while True:
+    # Création et ajout d'une nouvelle tâche toutes les secondes
+    new_task = Task(task_id, 1000)  # Exemple de tâche avec ID et paramètre
+    qc.taskQueue.put(new_task)
+    print(f"Tâche ajoutée à la file d'attente :  {new_task.identifier}")
+    task_id += 1
+
+    # Récupération des résultats
+    try:
+        while not qc.resultQueue.empty():
+            task_result = qc.resultQueue.get()
+            print(f"Tache récupéré : {task_result.identifier} en  {task_result.time} s")
+    except Exception as e:
+        print(f"Erreur lors de la récupération des résultats : {e}")
+
+    # Pause d'une seconde avant de poster une nouvelle tâche
+    time.sleep(1)

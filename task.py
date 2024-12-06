@@ -19,11 +19,18 @@ class Task:
         start = time.perf_counter()
         self.x = np.linalg.solve(self.a, self.b)
         self.time = time.perf_counter() - start
-        return (self.identifier, self.x, self.time)
 
     def to_json(self) -> str:
         return json.dumps(
-            {"a": self.a.tolist(), "b": self.b.tolist()}, sort_keys=True, indent=4
+            {
+                "a": self.a.tolist(),
+                "b": self.b.tolist(),
+                "x": self.x.tolist(),
+                "time": self.time,
+                "id": self.identifier,
+            },
+            sort_keys=True,
+            indent=4,
         )
 
     @staticmethod
@@ -32,6 +39,10 @@ class Task:
         t = Task()
         t.a = np.array(j["a"])
         t.b = np.array(j["b"])
+        t.x = np.array(j["x"])
+        t.time = np.array(j["time"])
+        t.identifier = np.array(j["id"])
+
         return t
 
     def __eq__(self, other: "Task") -> bool:
