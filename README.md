@@ -28,7 +28,7 @@
 
 ---
 
-### **2. Méthode `LLT` (Décomposition de Cholesky)**
+### **2. Méthode `LLT`**
 **Temps d'exécution** :
 - **0.00418424 secondes**
 - **0.00570986 secondes**
@@ -40,7 +40,7 @@
 
 ---
 
-### **3. Méthode `LDLT` (Décomposition de Cholesky)**
+### **3. Méthode `LDLT`**
 **Temps d'exécution** :
 - **0.0507618 secondes**
 - **0.0637664 secondes**
