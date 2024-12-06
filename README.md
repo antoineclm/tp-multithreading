@@ -10,7 +10,7 @@
 - **0.032150176 secondes**
 - **0.032449290 secondes**
 
-### **Temps moyen d'exécution** : **0.03143882159 secondes**
+**Temps moyen d'exécution** : **0.03143882159 secondes**
 
 ---
 
